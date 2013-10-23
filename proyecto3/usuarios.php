@@ -31,9 +31,18 @@
 			$user=explode(',',$value);
 			foreach ($user as $key => $value)
 			{
-				echo "<td>";
-				echo $value;
-				echo "</td>";
+				if ($key == 12)
+				{
+					echo "<td>";
+					echo "<img src=\"/proyecto3/uploads/".$value."\" width=100px />";
+					echo "</td>";
+				}
+				else
+				{
+					echo "<td>";
+					echo $value;
+					echo "</td>";
+				}
 			}
 			//Agregar al final "Options" (update, delete)
 			echo "<td>";

@@ -35,6 +35,8 @@ $userFile = $_SERVER['DOCUMENT_ROOT']."/proyecto3/usuarios.txt";
 file_put_contents($userFile,$text."\n",FILE_APPEND);
 
 
+header('Location: /proyecto3/usuarios.php');
+
 
 
 
