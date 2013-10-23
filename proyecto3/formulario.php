@@ -1,4 +1,4 @@
-<form action="action.php" method="post">
+<form action="action.php" method="post" enctype="multipart/form-data">
 <ul>
 	<li>
 		Id: <input type="hidden" name="id" value="1"/>
