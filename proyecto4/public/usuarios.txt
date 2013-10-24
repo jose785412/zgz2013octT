@@ -1,0 +1,6 @@
+1,Agustin,agustincl@gmail.com,,Direc,Telf,asdasd,PHP|MySQL,Gato,eng|esp,bcn,Enviar,Eusebio_Lillo_foto.jpeg
+1,Agustin,agustincl@gmail.com,,Direc,Telf,asdasd,PHP|MySQL,Gato,eng|esp,bcn,Enviar,Eusebio_Lillo_foto.jpeg
+1,Agustin,agustincl@gmail.com,,Direc,Telf,asdasd,PHP|MySQL,Gato,eng|esp,bcn,Enviar,Eusebio_Lillo_foto.jpeg
+1,asd,asd,asd,asd,asd,asd,PHP,Perro,eng,zgz,Enviar,images.jpg
+1,qwqe,qwe,qwe,qwe,qwe,qewe,PHP,Perro,fra,zgz,Enviar,1379878398_748760_1379878560_sumario_normal.jpg
+1,Caca,Caca@cac.com,ccacca,xcca,asdasdjkl,sdklfjsdjklf,PHP|JAVA,Gato,fra|esp,mad,Enviar,1379878398_748760_1379878560_sumario_normal.jpg
