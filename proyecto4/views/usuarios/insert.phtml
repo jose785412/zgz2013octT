@@ -1,10 +1,15 @@
+<?php 
+echo "<pre>";
+print_r($user);
+echo "</pre>";
+?>
 <form method="post" enctype="multipart/form-data">
 <ul>
 	<li>
 		Id: <input type="hidden" name="id" value="1"/>
 	</li>
 	<li>
-		Nombre: <input type="text" name="name"/>
+		Nombre: <input type="text" name="name" value="<?=(isset($user[1]))?$user[1]:'';?>"/>
 	</li>
 	<li>
 		Email: <input type="text" name="email"/>
