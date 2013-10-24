@@ -28,7 +28,7 @@ function userToFile($array_data, $file_name)
 /**
  * Read user line from text file and return as array 
  * @param int $line
- * @return array user
+ * @return array userarray
  */
 function readUserLine($line)
 {
@@ -40,9 +40,15 @@ function readUserLine($line)
 	//Leer la linea en cuestion
 	$user=$data[$line];
 	//Separar la linea en array
-	$user=explode(',', $user);	
+	$user=explode(',', $user);
+	foreach($user as $value)
+	{
+		if(strpos($value, '|')!==false)
+			$value=explode('|',$value);
+		$userarray[]=$value;
+	}	
 	//Retornar el array de usuario
-	return $user;
+	return $userarray;
 }
 
 /**
