@@ -6,16 +6,19 @@ else
 	$action='select';
 
 
+
+
 require_once ("../model/archivos.php");
 require_once ("../model/usuarios/usuarios.php");
 
 switch($action)
 {	
 	case 'update':
-		echo "Esto es update";
 		if($_POST)
 		{
-			
+			$filename=updateFoto($_FILES, $_GET['line']);
+			updateUserLine($_POST, $_GET['line'], $filename);
+			header('Location: /usuarios.php');
 		}
 		else
 		{
@@ -41,7 +44,19 @@ switch($action)
 	break;
 	
 	case 'delete':
-		echo "Esto es delete";
+		if($_POST)
+		{
+			if($_POST['borrar']=='Si')
+				deleteUserFromFile($_POST['line']);
+			header('Location: /usuarios.php');
+		}
+		else
+		{
+			echo "Esto es delete";
+			$user=readUserLine($_GET['line']);
+			include ("../views/usuarios/delete.phtml");
+		}
+		
 	break;
 	default:
 	case 'select':		

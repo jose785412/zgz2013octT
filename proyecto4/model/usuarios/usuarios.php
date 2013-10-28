@@ -41,10 +41,12 @@ function readUserLine($line)
 	$user=$data[$line];
 	//Separar la linea en array
 	$user=explode(',', $user);
-	foreach($user as $value)
+	foreach($user as $column => $value)
 	{
 		if(strpos($value, '|')!==false)
 			$value=explode('|',$value);
+		elseif($column==7 or $column==9)
+			$value=array($value);
 		$userarray[]=$value;
 	}	
 	//Retornar el array de usuario
@@ -68,10 +70,77 @@ function readAllUsersFromFile()
 	return $users;
 }
 
+/**
+ * Update user line in text file
+ * @param array $array_data
+ * @param int $line
+ * @param string $filename
+ */
+function updateUserLine($array_data, $line, $filename)
+{
+	$config_file="../configs/config.ini";
+	require_once ("../model/generalModel.php");
+	$config=readConfigFile($config_file, "development");
+	
+	$users=readAllUsersFromFile();
+	//recorrer cada elemento del POST
+	foreach($array_data as $key => $value)
+	{
+		//si es un array dividir por |
+		if (is_array($value))
+			$value=implode('|', $value);
+		$out[]=$value;
+	}
+	$out[]=$filename;			
+	$users[$line]=$out;	
+	$out=array();
+	foreach ($users as $user)
+		$out[]=implode(',',$user);		
+
+	$users=implode("\n",$out);
+	
+	$userfile = $_SERVER['DOCUMENT_ROOT'].$config['user_txt'];	
+	file_put_contents($userfile, $users);
+	
+}
+/**
+ * Update user foto
+ * @param array $_FILES
+ * @param int user line
+ * @return string filename
+ */
+function updateFoto($array_files, $line)
+{
+	
+	$user=readUserLine($line);
+	
+	$foto_anterior=$user[12];	
+	if(isset($_FILES['photo']['name']))
+	{
+		unlink($_SERVER['DOCUMENT_ROOT']."/uploads/".$foto_anterior);
+		$upload_dir = $_SERVER['DOCUMENT_ROOT']."/uploads";
+		move_uploaded_file($array_files['photo']['tmp_name'],
+		$upload_dir."/".$array_files['photo']['name']);
+	}	
+	return $array_files['photo']['name'];
+}
 
 
-
-
+function deleteUserFromFile($line)
+{
+	$users=readAllUsersFromFile();
+	//recorrer cada elemento del POST
+	unlink($_SERVER['DOCUMENT_ROOT']."/uploads/".$users[$line][12]);
+	unset($users[$line]);
+	$out=array();
+	foreach ($users as $user)
+		$out[]=implode(',',$user);
+	
+	$users=implode("\n",$out);
+	
+	$userfile = $_SERVER['DOCUMENT_ROOT']."/usuarios.txt";
+	file_put_contents($userfile, $users);
+}
 
 
 

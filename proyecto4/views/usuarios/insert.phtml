@@ -27,8 +27,18 @@ echo "</pre>";
 		Descripcion: <textarea name="description"><?=(isset($user[1]))?$user[6]:'';?></textarea>
 	</li>
 	<li>
-		Foto: <input type="file" name="photo" />
+		Foto: <input type="file" name="photo" />		
 	</li>
+	<?php if(isset($user[12])):?>
+		<li>
+			Imagen Actual
+			<img src="<?="/uploads/".$user[12];?>" />
+		</li>
+		<li>
+			Borrar la imagen actual?
+			<input type="checkbox" name="deleteimage" value="1" />
+		</li>
+	<?php endif;?>
 	<li>
 		Tecnologia: 
 			PHP: <input type="checkbox" name="techs[]" value="PHP" <?=(isset($user[7])&&in_array('PHP', $user[7]))?'checked':'';?>/>

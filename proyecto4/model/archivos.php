@@ -13,3 +13,4 @@ function subirFoto($array_files)
 	
 	return $array_files['photo']['name'];
 }
+
