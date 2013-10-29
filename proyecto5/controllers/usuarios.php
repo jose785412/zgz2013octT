@@ -5,9 +5,7 @@ if(isset($_GET['action']))
 else
 	$action='select';
 
-$config_file="../configs/config.ini";
-require_once ("../model/generalModel.php");
-$config=readConfigFile($config_file, "development");
+
 
 
 // echo "<pre>";
@@ -15,8 +13,9 @@ $config=readConfigFile($config_file, "development");
 // echo "</pre>";
 // die;
 
-require_once ("../model/archivos.php");
-require_once ("../model/usuarios/usuarios.php");
+
+// /controller/action/param/value/param2/value2
+
 
 switch($action)
 {	
@@ -25,7 +24,7 @@ switch($action)
 		{
 			$filename=updateFoto($_FILES, $_GET['line'], $config);
 			updateUserLine($_POST, $_GET['line'], $filename, $config);
-			header('Location: /usuarios.php');
+			header('Location: /?controller=usuarios&action=select');
 		}
 		else
 		{
@@ -41,7 +40,7 @@ switch($action)
 			$file_name=subirFoto($_FILES);
 			// Escribir a archivo
 			userToFile($_POST, $file_name, $config);					
-			header('Location: /usuarios.php');
+			header('Location: /?controller=usuarios&action=select');
 		}
 		else
 		{
@@ -55,7 +54,7 @@ switch($action)
 		{
 			if($_POST['borrar']=='Si')
 				deleteUserFromFile($_POST['line'],$config);
-			header('Location: /usuarios.php');
+			header('Location: /?controller=usuarios&action=select');
 		}
 		else
 		{
