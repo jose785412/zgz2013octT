@@ -1,23 +1,8 @@
 <?php
 
-if(isset($_GET['action']))
-	$action=$_GET['action'];
-else
-	$action='select';
+require_once ("../model/usuarios/users.php");
 
-
-
-
-// echo "<pre>";
-// print_r($config);
-// echo "</pre>";
-// die;
-
-
-// /controller/action/param/value/param2/value2
-
-
-switch($action)
+switch($request['action'])
 {	
 	case 'update':
 		if($_POST)
@@ -67,7 +52,22 @@ switch($action)
 	default:
 	case 'select':		
 		//Leer en string los datos del repositorio (usuarios.txt)
-		$users=readAllUsersFromFile($config);
+		$users=selectAllUsers($config);
 		include ("../views/usuarios/select.phtml");
 	break;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

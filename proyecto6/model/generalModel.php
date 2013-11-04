@@ -38,4 +38,37 @@ function readConfigFile($filename, $state)
 
 
 
+function getRequest()
+{
+	$uri=explode('/',$_SERVER['REQUEST_URI']);
+	
+	if(!isset($uri[1]))
+		return array('controller'=>'index');
+	
+	$controller = $uri[1];
+
+	if(!isset($uri[2]))
+		return array('controller'=>$controller,
+					 'action'=>'index');
+
+	$action = $uri[2];
+
+	$params=array();
+	foreach($uri as $key => $value)
+	{
+		if($key>2 AND ($key%2==1))
+		if(isset($uri[$key+1]))
+			$params[$value]=$uri[$key+1];
+	}
+
+
+
+	return array('controller'=>$controller,
+			'action'=>$action,
+			'params'=>$params
+	);
+
+}
+
+
 
