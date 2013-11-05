@@ -72,3 +72,22 @@ function getRequest()
 
 
 
+function readCities($config)
+{
+	switch($config['adapter'])
+	{
+		case 'mysql';
+			include_once('mysql/usuarios.php');
+			getCities($config);
+			return;
+		break;
+		case 'txt';
+			include_once('txts/usuarios.php');
+			getCities($config);
+			return;
+		break;
+	}
+}
+
+
+

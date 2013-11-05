@@ -7,14 +7,17 @@ switch($request['action'])
 	case 'update':
 		if($_POST)
 		{
-			$filename=updateFoto($_FILES, $_GET['line'], $config);
-			updateUserLine($_POST, $_GET['line'], $filename, $config);
-			header('Location: /?controller=usuarios&action=select');
+			$user=$_POST;
+			$user['filename']=updateFoto($_FILES, $request['params']['line'], $config);
+			writeUser($request['params']['line'], $user, $config);
+			
+			header('Location: /users');
 		}
 		else
 		{
+			include ("../views/helpers/selectForm.php");
 			//Lleer datos del archivo de usuarios segun la linea
-			$user=readUserLine($_GET['line'], $config);
+			$user=readUser($request['params']['line'], $config);
 			include ("../views/usuarios/insert.phtml");
 		}
 	break;
@@ -30,7 +33,10 @@ switch($request['action'])
 		else
 		{
 			$user=array();
+			$data=readCities($config);
+			include ("../views/helpers/selectForm.php");
 			include ("../views/usuarios/insert.phtml");
+			
 		}
 	break;
 	

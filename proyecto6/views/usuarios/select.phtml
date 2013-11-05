@@ -1,4 +1,4 @@
-<a href="?controller=usuarios&action=insert">Insertar usuario</a>
+<a href="/users/insert">Insertar usuario</a>
 <table border=1>
 <tr>
 	<th>Id</th>
@@ -16,9 +16,9 @@
 			<td><?=$value;?></td>
 		<?php endforeach;?>
 		<td>
-			<a href="?controller=usuarios&action=update&line=<?=$key;?>">Update</a>
+			<a href="/users/update/line/<?=$key;?>">Update</a>
 				&nbsp;&nbsp;
-			 <a href="?controller=usuarios&action=delete&line=<?=$key;?>">Delete</a>
+			 <a href="/users/delete/line/<?=$key;?>">Delete</a>
 		</td>
 	</tr>
 <?php endforeach;?>	

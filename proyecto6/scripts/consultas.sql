@@ -69,6 +69,8 @@ FROM users;
 analyze table users;
 
 
+SELECT * FROM users WHERE idusers=1;
+
 
 
 

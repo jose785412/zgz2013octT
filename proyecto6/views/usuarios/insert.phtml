@@ -1,8 +1,3 @@
-<?php 
-echo "<pre>";
-print_r($user);
-echo "</pre>";
-?>
 <form method="post" enctype="multipart/form-data">
 <ul>
 	<li>
@@ -63,6 +58,14 @@ echo "</pre>";
 	</li>
 	<li>
 		Ciudad: 
+		<?php 
+		$data=array('1'=>'Zaragoza',
+					'2'=>'Barcelona',
+					'3'=>'Madrid',
+					'4'=>'Bilbao');
+		
+		echo selectForm('cities_idcities', $data, $user);	
+		?>
 		<select name="cities">
 			<option value="zgz" <?=(isset($user[10])&&'zgz'==$user[10])?'selected':'';?>>Zaragoza</option>
 			<option value="bcn" <?=(isset($user[10])&&'bcn'==$user[10])?'selected':'';?>>Barcelona</option>
