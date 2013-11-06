@@ -1,5 +1,21 @@
 <?php 
 
+
+session_start();
+
+unset($_SESSION['cosa']);
+
+session_destroy();
+
+echo session_id();
+
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
+die;
+
+
 // Define application environment
 defined('APPLICATION_ENV') || 
 	define('APPLICATION_ENV', 
