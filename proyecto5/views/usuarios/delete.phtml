@@ -1,0 +1,23 @@
+<form method="post">
+<ul>
+	<li>
+		Id: <input type="hidden" name="line" value="<?=$_GET['line'];?>"/>
+	</li>
+	<li>
+		Nombre: <?=(isset($user[1]))?$user[1]:'';?>
+	</li>
+	<li>
+		Seguro que desea borrar el usuario
+	</li>	
+	<li>
+		Si: <input type="submit" name="borrar" value="Si" />
+		No: <input type="submit" name="borrar" value="No" />
+	</li>
+	
+	
+</ul>
+
+
+
+</form>
+

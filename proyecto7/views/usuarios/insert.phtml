@@ -1,0 +1,91 @@
+<form method="post" enctype="multipart/form-data">
+<ul>
+	<li>
+		Id: <input type="hidden" name="id" value="1"/>
+	</li>
+	<li>
+		Nombre: <input type="text" name="name" value="<?=(isset($user[1]))?$user[1]:'';?>"/>
+	</li>
+	<li>
+		Email: <input type="text" name="email" value="<?=(isset($user[1]))?$user[2]:'';?>"/>
+	</li>
+	<li>
+		Password: <input type="password" name="password"/>
+	</li>
+	<li>
+		Direccion: <input type="text" name="address" value="<?=(isset($user[1]))?$user[4]:'';?>"/>
+	</li>
+	<li>
+		Telefono: <input type="text" name="phone" value="<?=(isset($user[1]))?$user[5]:'';?>"/>
+	</li>
+	<li>
+		Descripcion: <textarea name="description"><?=(isset($user[1]))?$user[6]:'';?></textarea>
+	</li>
+	<li>
+		Foto: <input type="file" name="photo" />		
+	</li>
+	<?php if(isset($user[12])):?>
+		<li>
+			Imagen Actual
+			<img src="<?="/uploads/".$user[12];?>" />
+		</li>
+		<li>
+			Borrar la imagen actual?
+			<input type="checkbox" name="deleteimage" value="1" />
+		</li>
+	<?php endif;?>
+	<li>
+		Tecnologia: 
+			PHP: <input type="checkbox" name="techs[]" value="PHP" <?=(isset($user[7])&&in_array('PHP', $user[7]))?'checked':'';?>/>
+			MySQL: <input type="checkbox" name="techs[]" value="MySQL" <?=(isset($user[7])&&in_array('MySQL', $user[7]))?'checked':'';?>/>
+			Java: <input type="checkbox" name="techs[]" value="JAVA" <?=(isset($user[7])&&in_array('JAVA', $user[7]))?'checked':'';?>/>
+	</li>
+	<li>
+		Mascotas: 
+			Perro: <input type="radio" name="pets" value="Perro" <?=(isset($user[8])&&'Perro'==$user[8])?'checked':'';?>/>
+			Gato: <input type="radio" name="pets" value="Gato" <?=(isset($user[8])&&'Gato'==$user[8])?'checked':'';?>/>
+			Otros: <input type="radio" name="pets" value="Otros" <?=(isset($user[8])&&'Otros'==$user[8])?'checked':'';?>/>
+	</li>
+	<li>
+		Idiomas:
+		<select multiple name="languages[]">
+			<option value="eng" <?=(isset($user[9])&&in_array('eng', $user[9]))?'selected':'';?>>Ingles</option>
+			<option value="fra" <?=(isset($user[9])&&in_array('fra', $user[9]))?'selected':'';?>>Frances</option>
+			<option value="esp" <?=(isset($user[9])&&in_array('esp', $user[9]))?'selected':'';?>>Castellano</option>
+		</select> 
+		
+		
+	</li>
+	<li>
+		Ciudad: 
+		<?php 
+		$data=array('1'=>'Zaragoza',
+					'2'=>'Barcelona',
+					'3'=>'Madrid',
+					'4'=>'Bilbao');
+		
+		echo selectForm('cities_idcities', $data, $user);	
+		?>
+		<select name="cities">
+			<option value="zgz" <?=(isset($user[10])&&'zgz'==$user[10])?'selected':'';?>>Zaragoza</option>
+			<option value="bcn" <?=(isset($user[10])&&'bcn'==$user[10])?'selected':'';?>>Barcelona</option>
+			<option value="mad" <?=(isset($user[10])&&'mad'==$user[10])?'selected':'';?>>Madrid</option>
+		</select>
+	</li>
+	<li>
+		Submit: <input type="submit" name="Enviar" />
+	</li>
+	<li>
+		Reset: <input type="reset" name="Reset" value="Limpiar" />
+	</li>
+	<li>
+		Button: <input type="button" value="Boton" />
+	</li>
+	
+	
+</ul>
+
+
+
+</form>
+
